@@ -9,20 +9,15 @@ for(let i = 0; i<galleryItems.length; i++){
 }
 ul[0].innerHTML = s;
 
-img0.addEventListener("click", (event) => showModalImg(0));
-img1.addEventListener("click", (event) => showModalImg(1));
-img2.addEventListener("click", (event) => showModalImg(2));
-img3.addEventListener("click", (event) => showModalImg(3));
-img4.addEventListener("click", (event) => showModalImg(4));
-img5.addEventListener("click", (event) => showModalImg(5));
-img6.addEventListener("click", (event) => showModalImg(6));
-img7.addEventListener("click", (event) => showModalImg(7));
-img8.addEventListener("click", (event) => showModalImg(8));
+document.addEventListener("click", (event) => showModalImg(event.target.id));
 
-function showModalImg(index){
+function showModalImg(id){
+    if (id.length === 0 ) return;
+    
     const image = basicLightbox.create(
-        `<img width="1400" height="900" src="${galleryItems[index].original}">`,
+        `<img width="1400" height="900" src="${galleryItems[id.substring(3)].original}">`,
         { closable: true }
       );
     image.show();
+
 }
